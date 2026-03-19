@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions — VozAI</title>
+  <meta name="description" content="VozAI LLC Terms and Conditions including the SMS Notification Program.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:   #0F172A;
+      --teal:       #14B8A6;
+      --soft-white: #E5E7EB;
+      --gray:       #94A3B8;
+      --card-bg:    rgba(255,255,255,0.03);
+      --card-border:rgba(20,184,166,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--charcoal);
+      color: var(--soft-white);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: rgba(15,23,42,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(20,184,166,0.1);
+      padding: 24px 0;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo { height: 60px; width: auto; }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray);
+      border: 1px solid rgba(20,184,166,0.2);
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav-back:hover {
+      color: var(--teal);
+      border-color: rgba(20,184,166,0.5);
+      background: rgba(20,184,166,0.05);
+      text-decoration: none;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      padding: 80px 24px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.25);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 em { color: var(--teal); font-style: italic; }
+    .page-header .meta { font-size: 14px; color: var(--gray); }
+
+    /* CONTENT */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+
+    .intro-box {
+      font-size: 15px;
+      color: var(--gray);
+      background: var(--card-bg);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    /* SMS program highlight */
+    .sms-program {
+      background: linear-gradient(135deg, rgba(20,184,166,0.07), rgba(20,100,180,0.07));
+      border: 1px solid rgba(20,184,166,0.25);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+
+    .sms-program-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .sms-program p { font-size: 15px; color: var(--soft-white); margin-bottom: 12px; }
+    .sms-program p:last-child { margin-bottom: 0; }
+    .sms-program strong { color: #fff; }
+
+    .disclosure {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 12px 0 16px;
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .disclosure strong { color: var(--teal); }
+
+    /* Section */
+    .section {
+      margin-bottom: 44px;
+      scroll-margin-top: 80px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(20,184,166,0.12);
+      margin-bottom: 20px;
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.2);
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .section h2 { font-size: 1.3rem; font-weight: 600; color: #fff; }
+    .section p { font-size: 15px; color: var(--soft-white); margin-bottom: 14px; }
+    .section ul, .section ol { padding-left: 20px; margin-bottom: 14px; }
+    .section li { font-size: 15px; color: var(--soft-white); margin-bottom: 8px; }
+    .section li::marker { color: var(--teal); }
+    .section strong { color: #fff; }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .contact-card p { font-size: 14px; color: var(--gray); margin-bottom: 6px; }
+    .contact-card p:last-child { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(20,184,166,0.1);
+    }
+
+    .footer-top {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; }
+    .footer-tagline { font-size: 13px; color: var(--gray); margin-top: 6px; max-width: 320px; }
+
+    .footer-links { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--gray);
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--teal); background: rgba(20,184,166,0.08); text-decoration: none; }
+    .footer-links a.active { color: var(--teal); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(20,184,166,0.08);
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 24px 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-bottom p { font-size: 13px; color: var(--gray); }
+    .footer-sms { width: 100%; font-size: 12px; color: var(--gray); opacity: 0.65; }
+
+    @media (max-width: 640px) {
+      .nav-logo { height: 44px; }
+      .page-header { padding: 56px 20px 40px; }
+      .content { padding: 0 20px 80px; }
+      .footer-top, .footer-bottom { padding: 28px 20px; }
+    }
+  </style>
+<script type='text/javascript' src='https://api.netlify.com/g0WbzqkMO6D4JHITAlfPH3bYcj120Fcxtt5fw-wzwj2snShy7z_ZV2vSBbHprvfJYQumzwvS-vP8W12WcznDWxUvV-ZSdEByGRZ5eg_CX7xDN0Am8ycshl_zOymv1P0vLV5efwIjlLDfuT4-qf0JrGUUtCRhe_KgrAGezq0vbggYlM-J9tQiu5B-19V6MFod3PLOvS3HtQzN305Ldom3v8uh5b75VK8Gp1Pk054OuzPLMX5xC4q_-3f4J1pz-5sfclDL_szZKtDvq0Zwt6NSYCr3CepGGdyCJN0kreqySTydW5aglep6dMrNsCxcoUdOuuXVhpqPEeF_5y-Qcz4FcKLYdM7AJLKBjxwxEsPf-vxMUKI58swKfQvwzfBdsCMGAmKdu8_wFYBdoxwgiCqb_p1rWFH6O8oR9_Hm5ZM1NVXbPUOW8YK2O1lCHAR2RNer283r678ajtjbGmS-VczK7ZqdIQVFXDuIjLMtwrHnhURchl6zAxJZejUv6nOS0ABCMVK16h8sAzMZ5Nbuu1fES9zl0Jzt0oAcQmnxLvSu2Q'></script></head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <img src="VozAI_Logo.png" alt="VozAI" class="nav-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;">VozAI</span>
+      <a href="/" class="nav-back">← Back to Home</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="badge">Legal &amp; Compliance</div>
+    <h1>Terms &amp; <em>Conditions</em></h1>
+    <p class="meta">Last Updated: March 10, 2026 &nbsp;·&nbsp; VozAI LLC</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <p class="intro-box">
+      Welcome to VozAI LLC ("VozAI," "we," "us," or "our"). These Terms and Conditions govern your use of our services, including our website, AI agent solutions, and SMS notification program. By accessing or using our services, you agree to be bound by these terms.
+    </p>
+
+    <!-- SMS Program highlight -->
+    <div class="sms-program">
+      <div class="sms-program-title">📱 VozAI SMS Notification Program</div>
+
+      <p><strong>Program Description:</strong> The VozAI SMS Notification Program allows subscribers to receive important updates, appointment reminders, system notifications, and customer service communications via text message.</p>
+
+      <p><strong>Message Frequency:</strong> Message frequency varies based on your interactions and scheduled appointments. You may receive appointment reminders, confirmations, service updates, and occasional important notifications.</p>
+
+      <div class="disclosure">
+        <strong>Message and data rates may apply</strong> from your mobile carrier. VozAI does not charge for messages, but your carrier's rates will apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for assistance.
+      </div>
+
+      <p><strong>Supported Carriers:</strong> Available on all major U.S. carriers including AT&amp;T, Verizon, T-Mobile, Sprint, and others. Carriers are not liable for delayed or undelivered messages.</p>
+
+      <p><strong>How to Opt-Out:</strong> Reply <strong>STOP</strong> to any VozAI message. You will receive one confirmation message and no further messages unless you re-enroll.</p>
+
+      <p><strong>Help &amp; Support:</strong> Reply <strong>HELP</strong> to any message or email <a href="mailto:VozAISolutions@gmail.com">VozAISolutions@gmail.com</a>.</p>
+
+      <p><strong>Privacy:</strong> Your mobile phone number and personal information will be used in accordance with our <a href="/privacy-policy.html">Privacy Policy</a>. We will never sell, rent, or share your information with third parties for marketing purposes.</p>
+    </div>
+
+    <!-- 1 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">01</span><h2>Acceptance of Terms</h2></div>
+      <p>By using VozAI services, including subscribing to SMS notifications, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions and our <a href="/privacy-policy.html">Privacy Policy</a>.</p>
+    </section>
+
+    <!-- 2 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">02</span><h2>Use of Services</h2></div>
+      <p>VozAI provides custom AI agent solutions designed to help businesses automate communications, scheduling, research, and administrative tasks. Our services include:</p>
+      <ul>
+        <li>AI Receptionist services for call handling and appointment booking</li>
+        <li>Research Agent services for market analysis and lead generation</li>
+        <li>Personal Assistant services for task management and organization</li>
+        <li>SMS notification and communication services</li>
+      </ul>
+    </section>
+
+    <!-- 3 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">03</span><h2>Eligibility</h2></div>
+      <p>To use VozAI services and subscribe to SMS notifications, you must be at least 18 years of age, have the legal authority to enter into this agreement, and be the owner or authorized user of the mobile number provided.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">04</span><h2>User Responsibilities</h2></div>
+      <p>By using our services, you agree to:</p>
+      <ul>
+        <li>Provide accurate and current contact information</li>
+        <li>Maintain the security of your account and credentials</li>
+        <li>Notify us of any unauthorized use of your account</li>
+        <li>Ensure you have the right to use the mobile number provided for SMS</li>
+        <li>Comply with all applicable laws and regulations</li>
+      </ul>
+    </section>
+
+    <!-- 5 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">05</span><h2>Intellectual Property</h2></div>
+      <p>All content, features, and functionality of VozAI services — including text, graphics, logos, software, and AI models — are the exclusive property of VozAI LLC and are protected by copyright, trademark, and other intellectual property laws.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">06</span><h2>Limitation of Liability</h2></div>
+      <p>VozAI provides services on an "as is" and "as available" basis. To the fullest extent permitted by law:</p>
+      <ul>
+        <li>VozAI makes no warranties, express or implied, regarding the accuracy, reliability, or availability of services</li>
+        <li>VozAI is not liable for any indirect, incidental, special, or consequential damages</li>
+        <li>VozAI's total liability shall not exceed the amount paid by you for services in the 12 months preceding the claim</li>
+        <li>VozAI is not responsible for delays or failures in SMS delivery due to carrier issues</li>
+      </ul>
+    </section>
+
+    <!-- 7 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">07</span><h2>Service Modifications</h2></div>
+      <p>VozAI reserves the right to modify, suspend, or discontinue services at any time; update these Terms with notice to users; change pricing or service features with advance notice; and refuse service to anyone for any lawful reason.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">08</span><h2>Prohibited Uses</h2></div>
+      <p>You may not use VozAI services to:</p>
+      <ul>
+        <li>Violate any laws or regulations</li>
+        <li>Infringe on intellectual property rights</li>
+        <li>Transmit harmful, offensive, or illegal content</li>
+        <li>Impersonate any person or entity</li>
+        <li>Interfere with or disrupt services or servers</li>
+        <li>Collect or harvest data from other users without permission</li>
+      </ul>
+    </section>
+
+    <!-- 9 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">09</span><h2>Termination</h2></div>
+      <p>VozAI may terminate or suspend your access to services immediately, without prior notice, for any breach of these Terms. Upon termination, your right to use services will immediately cease, you will no longer receive SMS notifications, and VozAI may delete your data in accordance with our retention policies.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">10</span><h2>Governing Law</h2></div>
+      <p>These Terms and Conditions are governed by and construed in accordance with the laws of the United States and the state in which VozAI LLC is registered, without regard to conflict of law principles.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">11</span><h2>Dispute Resolution</h2></div>
+      <p>Any disputes arising from these terms or your use of VozAI services shall be resolved through good-faith negotiation. If negotiation fails, disputes may be subject to binding arbitration in accordance with applicable laws.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">12</span><h2>Changes to Terms</h2></div>
+      <p>VozAI may update these Terms from time to time. When we make changes, we will update the "Last Updated" date at the top of this page and notify active users via email or SMS when appropriate. Your continued use of services after changes constitutes acceptance.</p>
+    </section>
+
+    <!-- 13 -->
+    <section class="section">
+      <div class="section-head"><span class="section-num">13</span><h2>Contact Information</h2></div>
+      <p>For questions about these Terms, our services, or the SMS notification program:</p>
+      <div class="contact-card">
+        <p><strong style="color:#fff;">VozAI LLC</strong></p>
+        <p>Email: <a href="mailto:VozAISolutions@gmail.com">VozAISolutions@gmail.com</a></p>
+        <p>SMS Support: Reply <strong style="color:#fff;">HELP</strong> to any VozAI text message</p>
+        <p>Opt-Out: Reply <strong style="color:#fff;">STOP</strong> to any VozAI text message</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">VozAI</div>
+        <p class="footer-tagline">Premium AI integration partner for Medical Spas, Dental Offices, Insurance Agencies, and more.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/privacy-policy.html#sms">SMS Terms</a>
+        <a href="/terms-and-conditions.html" class="active">Terms of Service</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 VozAI LLC. All rights reserved.</p>
+      <p><a href="mailto:VozAISolutions@gmail.com">VozAISolutions@gmail.com</a></p>
+      <p class="footer-sms">Message &amp; data rates may apply. Reply STOP to opt out of SMS at any time.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

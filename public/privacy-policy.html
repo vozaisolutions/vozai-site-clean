@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — VozAI</title>
+  <meta name="description" content="VozAI LLC Privacy Policy — how we collect, use, and protect your information.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:   #0F172A;
+      --teal:       #14B8A6;
+      --soft-white: #E5E7EB;
+      --gray:       #94A3B8;
+      --card-bg:    rgba(255,255,255,0.03);
+      --card-border:rgba(20,184,166,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--charcoal);
+      color: var(--soft-white);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: rgba(15,23,42,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(20,184,166,0.1);
+      padding: 24px 0;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      height: 60px;
+      width: auto;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray);
+      border: 1px solid rgba(20,184,166,0.2);
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav-back:hover {
+      color: var(--teal);
+      border-color: rgba(20,184,166,0.5);
+      background: rgba(20,184,166,0.05);
+      text-decoration: none;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      padding: 80px 24px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.25);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .page-header h1 em { color: var(--teal); font-style: italic; }
+
+    .page-header .meta {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+
+    .intro-box {
+      font-size: 15px;
+      color: var(--gray);
+      background: var(--card-bg);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 44px;
+      scroll-margin-top: 80px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(20,184,166,0.12);
+      margin-bottom: 20px;
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.2);
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .section h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 20px 0 8px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .section p { font-size: 15px; color: var(--soft-white); margin-bottom: 14px; }
+
+    .section ul, .section ol { padding-left: 20px; margin-bottom: 14px; }
+
+    .section li { font-size: 15px; color: var(--soft-white); margin-bottom: 8px; }
+    .section li::marker { color: var(--teal); }
+    .section strong { color: #fff; }
+
+    /* SMS highlight box */
+    .sms-box {
+      background: linear-gradient(135deg, rgba(20,184,166,0.07), rgba(20,100,180,0.07));
+      border: 1px solid rgba(20,184,166,0.25);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 16px 0 24px;
+    }
+
+    .sms-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sms-box p { font-size: 15px; color: var(--soft-white); margin-bottom: 10px; }
+    .sms-box p:last-child { margin-bottom: 0; }
+
+    /* Disclosure callout */
+    .disclosure {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 12px 0 20px;
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .disclosure strong { color: var(--teal); }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .contact-card p { font-size: 14px; color: var(--gray); margin-bottom: 6px; }
+    .contact-card p:last-child { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(20,184,166,0.1);
+    }
+
+    .footer-top {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 6px;
+      max-width: 320px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--gray);
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--teal); background: rgba(20,184,166,0.08); text-decoration: none; }
+    .footer-links a.active { color: var(--teal); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(20,184,166,0.08);
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 24px 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-bottom p { font-size: 13px; color: var(--gray); }
+    .footer-sms { width: 100%; font-size: 12px; color: var(--gray); opacity: 0.65; }
+
+    @media (max-width: 640px) {
+      .nav-inner { flex-direction: row; }
+      .nav-logo { height: 44px; }
+      .page-header { padding: 56px 20px 40px; }
+      .content { padding: 0 20px 80px; }
+      .footer-top, .footer-bottom { padding: 28px 20px; }
+    }
+  </style>
+<script type='text/javascript' src='https://api.netlify.com/94I_-fcw2c1iiEy7CShYvjLlZ5jkspAtrhGy5g-sRKLu1Q5I3uINLC5zgzqL4G0aqu9tijVJMbz1VWOGCAJfEABzp11V6r8QLFDqA7svaMkxF9faMsCYrfA5JtroVIuZ1VuyJCsJkXSUhC1csdQkXsb1K2FCb85q7V4IaY5Wx9cFf4DCMB0InbMGQ1lawfoaBocnqNrYcft80l0OZ-FxwH3uNigHPQcqregtCw6m3fc2cOXEbzuqgKX5_WZvgnUJa4m_v5p-Y2yQDCIsYTfPy2nxA3Ld0nvzjLucVperKs-tew3uI9_KIi4IG9Tk2gJeoAhMXmDXO_s_PCwEEaXgTvZnVJcg1DYln9lw0T9PhBlEbW3DDuD_5I44JnYCB75QRQVVLIAyhY59cTTPzEYmXGn45pL8wMREezp3E0A02ndIZPDu9WyOMO_iepOoVN6nFLT0gD9sqy0EATmy85dsoWsPNs69JbY6SkZOFQ7bE9smlvwkqERn7F-lBpn-r6ch9UUvLzyaHVWBBT9W4v5OrW5eAitT562q'></script></head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <img src="VozAI_Logo.png" alt="VozAI" class="nav-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;">VozAI</span>
+      <a href="/" class="nav-back">
+        ← Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="badge">Legal &amp; Compliance</div>
+    <h1>Privacy Policy &amp; <em>SMS Terms</em></h1>
+    <p class="meta">Last Updated: March 10, 2026 &nbsp;·&nbsp; VozAI LLC</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <p class="intro-box">
+      VozAI LLC ("VozAI," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your personal information when you interact with our services, including SMS communications. Questions? <a href="#contact">See Section 10</a>.
+    </p>
+
+    <!-- 1 -->
+    <section class="section" id="information">
+      <div class="section-head"><span class="section-num">01</span><h2>Information We Collect</h2></div>
+      <p>When you subscribe to SMS notifications or interact with VozAI services, we may collect:</p>
+      <ul>
+        <li><strong>Name</strong> — To personalize communications and identify you</li>
+        <li><strong>Mobile Phone Number</strong> — To send SMS notifications, appointment reminders, and updates</li>
+        <li><strong>Email Address</strong> — For additional communications and account management</li>
+        <li><strong>Communication Preferences</strong> — Your opt-in consent and preferences for receiving messages</li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="section" id="use">
+      <div class="section-head"><span class="section-num">02</span><h2>How We Use Your Information</h2></div>
+      <p>VozAI collects and uses your personal information solely for:</p>
+      <ul>
+        <li>Sending appointment reminders and confirmations</li>
+        <li>Providing system notifications and important service updates</li>
+        <li>Responding to your inquiries and service requests</li>
+        <li>Improving our AI agent services and customer experience</li>
+        <li>Complying with legal obligations and regulatory requirements</li>
+      </ul>
+      <h3>We do NOT use your information for:</h3>
+      <ul>
+        <li>Marketing or promotional purposes without explicit consent</li>
+        <li>Selling or sharing your data with third-party marketers</li>
+        <li>Lead generation or distribution to external parties</li>
+      </ul>
+    </section>
+
+    <!-- 3 — SMS -->
+    <section class="section" id="sms">
+      <div class="section-head"><span class="section-num">03</span><h2>SMS Communications</h2></div>
+
+      <div class="sms-box">
+        <div class="sms-box-label">📱 SMS Opt-In Disclosure</div>
+        <p>By providing your mobile phone number and opting in to SMS notifications, you consent to receive text messages from VozAI which may include appointment reminders and confirmations, service notifications and updates, and important account information.</p>
+        <p><strong>Consent is not a condition of purchase.</strong> You may use our services without opting into SMS communications.</p>
+      </div>
+
+      <h3>Message Frequency &amp; Rates</h3>
+      <div class="disclosure">
+        <strong>Message frequency may vary</strong> based on your interactions and appointments. <strong>Message and data rates may apply</strong> from your mobile carrier. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for assistance.
+      </div>
+
+      <h3>How to Opt Out</h3>
+      <p>You can stop receiving SMS messages at any time by replying <strong>STOP</strong> to any message. You will receive one final confirmation and no further messages will be sent unless you re-enroll.</p>
+
+      <h3>How to Get Help</h3>
+      <p>Reply <strong>HELP</strong> to any message, or contact us at <a href="mailto:VozAISolutions@gmail.com">VozAISolutions@gmail.com</a>.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="section" id="sharing">
+      <div class="section-head"><span class="section-num">04</span><h2>Data Sharing &amp; Third Parties</h2></div>
+      <p><strong>We do NOT sell, rent, or share your personal information with third parties for marketing purposes.</strong> No mobile information, including your phone number and SMS opt-in data, will be shared with third parties or affiliates for marketing or promotional purposes at any time.</p>
+      <p>We may share your information only in these limited circumstances:</p>
+      <ul>
+        <li><strong>Service Providers</strong> — Trusted technology partners (such as Twilio for SMS delivery) bound by strict confidentiality agreements and only permitted to use your data to provide services on our behalf</li>
+        <li><strong>Legal Requirements</strong> — If required by law, court order, or government regulation</li>
+        <li><strong>Business Protection</strong> — To protect the rights, property, or safety of VozAI, our clients, or others</li>
+      </ul>
+    </section>
+
+    <!-- 5 -->
+    <section class="section" id="security">
+      <div class="section-head"><span class="section-num">05</span><h2>Data Security</h2></div>
+      <p>VozAI implements industry-standard security measures to protect your personal information, including:</p>
+      <ul>
+        <li>Encrypted data transmission and storage</li>
+        <li>Access controls and authentication</li>
+        <li>Regular security assessments and updates</li>
+        <li>Secure partnerships with reputable service providers</li>
+      </ul>
+    </section>
+
+    <!-- 6 -->
+    <section class="section" id="retention">
+      <div class="section-head"><span class="section-num">06</span><h2>Data Retention</h2></div>
+      <p>We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy, or as required by law. SMS opt-in consent records are retained for a minimum of 4 years to comply with TCPA and carrier requirements. When your information is no longer needed, we will securely delete or anonymize it.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="section" id="rights">
+      <div class="section-head"><span class="section-num">07</span><h2>Your Rights</h2></div>
+      <p>You have the following rights regarding your personal information:</p>
+      <ul>
+        <li><strong>Access</strong> — Request a copy of the personal data we hold about you</li>
+        <li><strong>Correction</strong> — Request corrections to inaccurate or incomplete information</li>
+        <li><strong>Deletion</strong> — Request deletion of your personal information (subject to legal obligations)</li>
+        <li><strong>Opt-Out</strong> — Unsubscribe from SMS communications at any time by replying STOP</li>
+        <li><strong>Withdrawal of Consent</strong> — Withdraw your consent for data processing at any time</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:VozAISolutions@gmail.com">VozAISolutions@gmail.com</a>.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="section" id="children">
+      <div class="section-head"><span class="section-num">08</span><h2>Children's Privacy</h2></div>
+      <p>VozAI services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child under 18, we will take steps to delete that information promptly.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="section" id="california">
+      <div class="section-head"><span class="section-num">09</span><h2>California Privacy Rights</h2></div>
+      <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information we collect, the right to delete your information, and the right to opt-out of the sale of personal information. <strong>VozAI does not sell personal information.</strong></p>
+    </section>
+
+    <!-- 10 -->
+    <section class="section" id="contact">
+      <div class="section-head"><span class="section-num">10</span><h2>Changes &amp; Contact</h2></div>
+      <p>VozAI may update this Privacy Policy from time to time. When we make changes, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+      <p>For questions, concerns, or requests regarding this Privacy Policy or how we handle your information:</p>
+      <div class="contact-card">
+        <p><strong style="color:#fff;">VozAI LLC</strong></p>
+        <p>Email: <a href="mailto:VozAISolutions@gmail.com">VozAISolutions@gmail.com</a></p>
+        <p style="margin-top:10px;font-size:13px;">We will respond to your inquiry within a reasonable timeframe.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">VozAI</div>
+        <p class="footer-tagline">Premium AI integration partner for Medical Spas, Dental Offices, Insurance Agencies, and more.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/privacy-policy.html" class="active">Privacy Policy</a>
+        <a href="/privacy-policy.html#sms">SMS Terms</a>
+        <a href="/terms-and-conditions.html">Terms of Service</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 VozAI LLC. All rights reserved.</p>
+      <p><a href="mailto:VozAISolutions@gmail.com">VozAISolutions@gmail.com</a></p>
+      <p class="footer-sms">Message &amp; data rates may apply. Reply STOP to opt out of SMS at any time.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
