@@ -82,19 +82,118 @@ function buildConfirmationSMS(name, eventName, startTime) {
   );
 }
 
+/**
+ * Recursively walk an object looking for a value whose key matches a phone
+ * pattern. Returns the first match found, or null. Guards against circular
+ * refs via a visited Set.
+ */
+function deepFindPhone(obj, visited = new Set()) {
+  if (!obj || typeof obj !== "object" || visited.has(obj)) return null;
+  visited.add(obj);
+
+  const PHONE_KEY = /phone|mobile|cell|tel|sms/i;
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (PHONE_KEY.test(key) && typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+    if (value && typeof value === "object") {
+      const found = deepFindPhone(value, visited);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
 // ---------------------------------------------------------------------------
 // EVENT HANDLERS
 // Structured so you can add BOOKING_CANCELLED, BOOKING_RESCHEDULED, etc.
 // ---------------------------------------------------------------------------
 
 async function handleBookingCreated(payload) {
-  const attendees = payload.attendees || [];
+  // ── 0. NORMALIZE PAYLOAD LEVEL ───────────────────────────────────────────
+  // Cal.com wraps the booking object under payload.payload in most webhook
+  // versions. We alias it here so all reads below work regardless of nesting.
+  const booking = payload.payload || payload;
+
+  // ── 1. ATTENDEE NAME ────────────────────────────────────────────────────
+  const attendees = booking.attendees || [];
   const attendee  = attendees[0] || {};
 
-  const name      = attendee.name  || "there";
-  const rawPhone  = attendee.phoneNumber || attendee.phone || null;
-  const startTime = payload.startTime || null;
-  const eventName = payload.title    || payload.eventType?.title || null;
+  // responses.name.value is the most reliable source; fall back to attendees[]
+  const name =
+    booking.responses?.name?.value ||
+    attendee.name ||
+    "there";
+  console.log(`[cal-webhook] Attendee name source: ${
+    booking.responses?.name?.value ? "booking.responses.name.value" :
+    attendee.name                  ? "booking.attendees[0].name"    : "fallback 'there'"
+  } → "${name}"`);
+
+  // ── 2. PHONE NUMBER ─────────────────────────────────────────────────────
+  // Cal.com stores custom question answers in booking.responses as:
+  //   { "<questionIdentifier>": { label: "Phone Number", value: "+1..." } }
+  // We also check attendees[] and metadata as fallbacks.
+
+  let rawPhone = null;
+  let phoneSource = "none";
+
+  // 2a. responses object — scan every key for phone-like labels or values
+  if (booking.responses && typeof booking.responses === "object") {
+    const PHONE_LABELS = /phone|mobile|cell|tel|sms/i;
+
+    for (const [key, field] of Object.entries(booking.responses)) {
+      const label = (field?.label || key || "").toString();
+      const value = field?.value;
+
+      if (!value || typeof value !== "string") continue;
+
+      // Match by label name OR by key name containing phone keywords
+      if (PHONE_LABELS.test(label) || PHONE_LABELS.test(key)) {
+        rawPhone    = value;
+        phoneSource = `booking.responses["${key}"].value (label: "${label}")`;
+        break;
+      }
+    }
+  }
+
+  // 2b. attendees[0] direct fields
+  if (!rawPhone) {
+    rawPhone = attendee.phoneNumber || attendee.phone || null;
+    if (rawPhone) phoneSource = "booking.attendees[0].phoneNumber/phone";
+  }
+
+  // 2c. booking.metadata (some Cal.com setups pass it here)
+  if (!rawPhone && booking.metadata && typeof booking.metadata === "object") {
+    const meta = booking.metadata;
+    rawPhone = meta.phone || meta.phoneNumber || meta.mobile || null;
+    if (rawPhone) phoneSource = "booking.metadata";
+  }
+
+  // 2d. Deep fallback — recursively walk the entire booking looking for any
+  //     string value whose key matches a phone pattern (last resort)
+  if (!rawPhone) {
+    rawPhone = deepFindPhone(booking);
+    if (rawPhone) phoneSource = "deep booking scan";
+  }
+
+  console.log(`[cal-webhook] Phone source: ${phoneSource} → "${rawPhone}"`);
+
+  // ── 3. START TIME ────────────────────────────────────────────────────────
+  const startTime =
+    booking.startTime          ||
+    booking.payload?.startTime ||
+    null;
+  console.log(`[cal-webhook] Start time source: ${
+    booking.startTime          ? "booking.startTime"          :
+    booking.payload?.startTime ? "booking.payload.startTime"  : "not found"
+  } → "${startTime}"`);
+
+  // ── 4. EVENT NAME ────────────────────────────────────────────────────────
+  const eventName =
+    booking.title            ||
+    booking.eventType?.title ||
+    null;
 
   console.log(`[cal-webhook] Booking created — attendee: "${name}", phone: "${rawPhone}", start: "${startTime}"`);
 
