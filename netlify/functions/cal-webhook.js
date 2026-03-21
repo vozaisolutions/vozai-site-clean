@@ -114,7 +114,8 @@ async function handleBookingCreated(payload) {
   // ── 0. NORMALIZE PAYLOAD LEVEL ───────────────────────────────────────────
   // Cal.com wraps the booking object under payload.payload in most webhook
   // versions. We alias it here so all reads below work regardless of nesting.
-  const booking = payload.payload || payload;
+  const booking = payload.payload;
+  console.log("[cal-webhook] BOOKING OBJECT:", JSON.stringify(booking, null, 2));
 
   // ── 1. ATTENDEE NAME ────────────────────────────────────────────────────
   const attendees = booking.attendees || [];
