@@ -5,6 +5,7 @@
 // - Creates booking in Cal.com v2
 // - Handles timezone conversion correctly
 // - Supports either `notes` or `service` from the agent payload
+// - Accepts, normalizes, validates, and forwards guest phone number
 
 const CAL_API_BASE = "https://api.cal.com/v2";
 const CAL_API_VERSION = "2024-08-13";
@@ -14,6 +15,25 @@ const DEFAULT_TIMEZONE = "America/New_York";
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+/**
+ * Normalize a US phone number to E.164 format (+1XXXXXXXXXX).
+ * Accepts:
+ *   - 10-digit:  3051234567, 305-123-4567, (305) 123-4567
+ *   - 11-digit:  13051234567, 1-305-123-4567
+ * Returns null if the number cannot be normalized.
+ */
+function normalizeUsPhone(phone) {
+  if (!phone) return null;
+  const digits = String(phone).replace(/\D/g, "");
+  if (digits.length === 10) {
+    return `+1${digits}`;
+  }
+  if (digits.length === 11 && digits.startsWith("1")) {
+    return `+${digits}`;
+  }
+  return null;
 }
 
 /**
@@ -161,6 +181,7 @@ exports.handler = async (event) => {
     notes,
     service,
     timeZone,
+    phone,           // ← NEW
   } = body;
 
   const missing = [];
@@ -193,6 +214,38 @@ exports.handler = async (event) => {
       }),
     };
   }
+
+  // ── Phone validation ──────────────────────────────────────────────────────
+  console.log(`[create-booking][${requestId}] Raw phone received: ${phone ?? "(none)"}`);
+
+  if (!phone) {
+    console.error(`[create-booking][${requestId}] Missing phone number`);
+    return {
+      statusCode: 400,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        success: false,
+        message: "Missing required field: phone",
+      }),
+    };
+  }
+
+  const normalizedPhone = normalizeUsPhone(phone);
+
+  if (!normalizedPhone) {
+    console.error(`[create-booking][${requestId}] Invalid phone number: ${phone}`);
+    return {
+      statusCode: 400,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        success: false,
+        message: `The phone number "${phone}" could not be normalized. Please provide a valid 10-digit US number (e.g. 305-123-4567).`,
+      }),
+    };
+  }
+
+  console.log(`[create-booking][${requestId}] Normalized phone: ${normalizedPhone}`);
+  // ─────────────────────────────────────────────────────────────────────────
 
   const CAL_API_KEY = process.env.CAL_API_KEY;
   if (!CAL_API_KEY) {
@@ -245,10 +298,12 @@ exports.handler = async (event) => {
       email: String(email).trim().toLowerCase(),
       timeZone: resolvedTZ,
       language: "en",
+      phoneNumber: normalizedPhone,     // ← NEW
     },
     bookingFieldsResponses: {
       title: bookingTitle,
       ...(combinedNotes ? { notes: String(combinedNotes).trim() } : {}),
+      attendeePhoneNumber: normalizedPhone,  // ← NEW
     },
     metadata: {
       source: "vozai-voice-agent",
