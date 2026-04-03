@@ -13,10 +13,6 @@ const CAL_EVENT_SLUG = "vozai-demo-consultation";
 const CAL_USERNAME = "cindy-p0qomv";
 const DEFAULT_TIMEZONE = "America/New_York";
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
 /**
  * Normalize a US phone number to E.164 format (+1XXXXXXXXXX).
  * Accepts:
@@ -175,18 +171,16 @@ exports.handler = async (event) => {
 
   const {
     name,
-    email,
     date,
     time,
     notes,
     service,
     timeZone,
-    phone,           // ← NEW
+    phone,
   } = body;
 
   const missing = [];
   if (!name) missing.push("name");
-  if (!email) missing.push("email");
   if (!date) missing.push("date");
   if (!time) missing.push("time");
 
@@ -199,18 +193,6 @@ exports.handler = async (event) => {
         success: false,
         message: `Missing required fields: ${missing.join(", ")}`,
         missingFields: missing,
-      }),
-    };
-  }
-
-  if (!isValidEmail(email)) {
-    console.error(`[create-booking][${requestId}] Invalid email: ${email}`);
-    return {
-      statusCode: 400,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        success: false,
-        message: `The email address "${email}" does not appear to be valid.`,
       }),
     };
   }
@@ -295,15 +277,14 @@ exports.handler = async (event) => {
     start: startISO,
     attendee: {
       name: String(name).trim(),
-      email: String(email).trim().toLowerCase(),
       timeZone: resolvedTZ,
       language: "en",
-      phoneNumber: normalizedPhone,     // ← NEW
+      phoneNumber: normalizedPhone,
     },
     bookingFieldsResponses: {
       title: bookingTitle,
       ...(combinedNotes ? { notes: String(combinedNotes).trim() } : {}),
-      attendeePhoneNumber: normalizedPhone,  // ← NEW
+      attendeePhoneNumber: normalizedPhone,
     },
     metadata: {
       source: "vozai-voice-agent",
@@ -417,7 +398,6 @@ exports.handler = async (event) => {
       calendarLink: booking?.meetingUrl ?? null,
       attendee: {
         name: String(name).trim(),
-        email: String(email).trim().toLowerCase(),
       },
     }),
   };
